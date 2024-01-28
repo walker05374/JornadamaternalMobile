@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:title="Inicio"
+        android:icon="@drawable/baseline_home_24"/>
+
+    <item
+        android:id="@+id/shorts"
+        android:title="nao defenido"
+        android:icon="@drawable/baseline_error1_24"/>
+
+    <item
+        android:id="@+id/fab"
+        android:title=""
+        android:enabled="false"/>
+
+    <item
+        android:id="@+id/subscriptions"
+        android:title="nao defenido"
+        android:icon="@drawable/baseline_error_24"/>
+
+    <item
+        android:id="@+id/library"
+        android:title="configurações"
+        android:icon="@drawable/baseline_settings_24"/>
+
+</menu>
