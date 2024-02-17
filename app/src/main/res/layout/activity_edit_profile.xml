@@ -84,13 +84,15 @@
                 android:textColor="@color/black"/>
 
             <Button
+                android:id="@+id/saveButton"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="Salvar"
-                android:id="@+id/saveButton"
-                android:textSize="18sp"
                 android:layout_marginTop="30dp"
-                app:cornerRadius = "20dp"/>
+                android:foreground="@drawable/azul_border"
+                android:text="Salvar"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                app:cornerRadius="20dp" />
 
 
         </LinearLayout>

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/inicio"
-    tools:context=".ProfileActivity">
+    tools:context="Perfil">
 
     <ImageView
         android:id="@+id/profileImg"
@@ -17,6 +17,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="16dp" />
+
 
     <TextView
         android:id="@+id/titleUsername"
@@ -195,16 +196,19 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/editButton"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:id="@+id/editButton"
+        android:foreground="@drawable/azul_border"
         android:gravity="center"
         android:text="Editar Perfil"
+        android:textAllCaps="false"
         android:textSize="18sp"
-        app:cornerRadius = "20dp"
+        app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/linearLayout"
         app:layout_constraintStart_toStartOf="@id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout"/>
+        app:layout_constraintTop_toBottomOf="@id/linearLayout" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
