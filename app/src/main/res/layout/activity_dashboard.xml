@@ -194,7 +194,7 @@
                         android:text="Noticias"
                         android:textColor="@color/azul"
                         android:textSize="20sp"
-                        android:tag="noticias0"
+                        android:tag="Construcao"
                         android:onClick="abrirAtividade"/>
 
                     <ImageView
@@ -204,7 +204,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="15dp"
                         android:src="@drawable/baseline_error1_24"
-                        android:tag="noticias0"
+                        android:tag="Construcao"
                         android:onClick="abrirAtividade"/>
 
                 </RelativeLayout>
@@ -224,26 +224,26 @@
                     android:foreground="@drawable/azul_border">
 
                     <TextView
-                        android:id="@+id/testeName"
+                        android:id="@+id/CameraActivity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/perfil"
+                        android:layout_below="@+id/camera1"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
-                        android:text="teste"
+                        android:text="Camera"
                         android:textColor="@color/azul"
                         android:textSize="20sp"
-                        android:tag="teste0"
+                        android:tag="CameraActivity"
                         android:onClick="abrirAtividade"/>
 
                     <ImageView
-                        android:id="@+id/perfil"
+                        android:id="@+id/camera1"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="15dp"
-                        android:src="@drawable/ic_baseline_person_pin_24"
-                        android:tag="teste0"
+                        android:src="@drawable/ic_baseline_camera_24"
+                        android:tag="CameraActivity"
                         android:onClick="abrirAtividade"/>
 
                 </RelativeLayout>

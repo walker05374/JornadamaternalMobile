@@ -1,20 +1,20 @@
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="#629ea5">
 
     <TextView
         android:id="@+id/notificationTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="" />
+        android:text="Seja bem Vindo(a)" />
 
     <TextView
         android:id="@+id/notificationMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="" />
+        android:text="aqui você fica por dentro de tudo sobre gestação" />
 
 </LinearLayout>

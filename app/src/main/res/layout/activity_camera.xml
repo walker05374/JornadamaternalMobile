@@ -1,20 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/inicio"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    tools:context=".CameraActivity">
 
-    <androidx.camera.view.PreviewView
+    <ImageView
         android:id="@+id/cameraView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_width="348dp"
+        android:layout_height="505dp"
+        android:background="#80E4E1E1"
+        android:foreground="@drawable/azul_border"
+        android:scrollbarThumbHorizontal="@drawable/azul_border"
+        android:scrollbarThumbVertical="@drawable/azul_border"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.23" />
 
     <Button
         android:id="@+id/captureButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:text="Capturar Foto" />
+        android:layout_width="123dp"
+        android:layout_height="59dp"
+        android:layout_marginBottom="38dp"
+        android:drawableBottom="@drawable/azul_border"
+        android:foreground="@drawable/azul_border"
+        android:onClick="capturaFoto"
+        android:text="Iniciar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cameraView"
+        app:layout_constraintVertical_bias="0.772" />
 
-</RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

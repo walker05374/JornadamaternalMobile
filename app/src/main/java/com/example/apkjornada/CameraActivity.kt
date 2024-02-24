@@ -1,88 +1,92 @@
+package com.example.apkjornada
+
+import android.Manifest
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.os.Bundle
-import androidx.activity.result.contract.ActivityResultContracts
+import android.provider.MediaStore
+import android.util.Log
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.camera.core.CameraSelector
-import androidx.camera.core.Preview
-import androidx.camera.lifecycle.ProcessCameraProvider
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.example.apkjornada.databinding.ActivityCameraBinding
-import java.util.concurrent.ExecutorService
-import java.util.concurrent.Executors
 
 class CameraActivity : AppCompatActivity() {
 
-    private lateinit var cameraExecutor: ExecutorService
-    private lateinit var binding: ActivityCameraBinding
-    private var cameraProvider: ProcessCameraProvider? = null
+    private val REQUEST_IMAGE_CAPTURE = 1
+    private lateinit var imageView: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_camera)
 
-        binding = ActivityCameraBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        imageView = findViewById(R.id.cameraView)
+        val buttonOpenCamera: Button = findViewById(R.id.captureButton)
 
-        // Inicializa o executor para a câmera
-        cameraExecutor = Executors.newSingleThreadExecutor()
-
-        // Solicita permissão da câmera
-        requestCameraPermission()
-
-        // Configura o botão de captura
-        binding.captureButton.setOnClickListener {
-            // Adicione lógica para capturar a foto aqui
+        buttonOpenCamera.setOnClickListener {
+            // Antes de chamar dispatchTakePictureIntent, adicione a seguinte verificação
+            if (packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)) {
+                // Adicione esta verificação antes de chamar dispatchTakePictureIntent
+                if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                    dispatchTakePictureIntent()
+                } else {
+                    ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), REQUEST_CAMERA_PERMISSION)
+                }
+            } else {
+                Toast.makeText(this, "Este dispositivo não possui uma câmera", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
-    private fun requestCameraPermission() {
-        val requestPermissionLauncher =
-            registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
-                if (isGranted) {
-                    // Se a permissão for concedida, inicia a câmera
-                    startCamera()
+    private fun dispatchTakePictureIntent() {
+        try {
+            Log.d("CameraActivity", "dispatchTakePictureIntent: Before starting activity")
+            val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            if (takePictureIntent.resolveActivity(packageManager) != null) {
+                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+                Log.d("CameraActivity", "dispatchTakePictureIntent: After starting activity")
+            } else {
+                Log.e("CameraActivity", "dispatchTakePictureIntent: No camera app found")
+                // Exiba uma mensagem para o usuário informando que nenhum aplicativo de câmera foi encontrado
+                Toast.makeText(this, "Nenhum aplicativo de câmera encontrado", Toast.LENGTH_SHORT).show()
+            }
+        } catch (e: Exception) {
+            Log.e("CameraActivity", "dispatchTakePictureIntent: Error starting the camera activity", e)
+            // Adicione qualquer tratamento de erro que você achar necessário
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        Log.d("CameraActivity", "onActivityResult: requestCode=$requestCode, resultCode=$resultCode")
+
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            val imageBitmap = data?.extras?.get("data") as Bitmap
+            imageView.setImageBitmap(imageBitmap)
+            Log.d("CameraActivity", "onActivityResult: Image set to ImageView")
+        } else {
+            Log.d("CameraActivity", "onActivityResult: Capture failed or cancelled")
+        }
+    }
+
+    companion object {
+        private const val REQUEST_CAMERA_PERMISSION = 101
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        when (requestCode) {
+            REQUEST_CAMERA_PERMISSION -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    dispatchTakePictureIntent()
                 } else {
-                    // Se a permissão for negada, pode tratar de acordo com sua lógica
-                    finish()
+                    Toast.makeText(this, "Permissão de câmera negada", Toast.LENGTH_SHORT).show()
                 }
             }
-
-        // Solicita permissão da câmera
-        requestPermissionLauncher.launch(android.Manifest.permission.CAMERA)
-    }
-
-    private fun startCamera() {
-        val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
-
-        // Configura o listener para o futuro do provedor de câmera
-        cameraProviderFuture.addListener({
-            try {
-                // Obtém a instância do provedor de câmera
-                cameraProvider = cameraProviderFuture.get()
-
-                // Configura o caso de uso de visualização (Preview)
-                val preview = Preview.Builder().build()
-                preview.setSurfaceProvider(binding.cameraView.surfaceProvider)
-
-                // Desvincula todos os casos de uso existentes
-                cameraProvider?.unbindAll()
-
-                // Liga o caso de uso de visualização à câmera
-                val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
-                val camera = cameraProvider?.bindToLifecycle(
-                    this, cameraSelector, preview
-                )
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }, ContextCompat.getMainExecutor(this))
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-
-        // Desvincula todos os casos de uso da câmera ao destruir a atividade
-        cameraProvider?.unbindAll()
-
-        // Encerra o executor da câmera ao destruir a atividade
-        cameraExecutor.shutdown()
+            // Adicione outros casos conforme necessário
+        }
     }
 }
