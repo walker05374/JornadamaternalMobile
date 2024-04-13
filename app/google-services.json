@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "995374139536",
+    "project_id": "jornadamaterna-873ed",
+    "storage_bucket": "jornadamaterna-873ed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:995374139536:android:9748c759efc3da645e3015",
+        "android_client_info": {
+          "package_name": "com.example.apkjornada"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDg6thIhe4RS9AFHNaCwKsXi5XIzmfzA44"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

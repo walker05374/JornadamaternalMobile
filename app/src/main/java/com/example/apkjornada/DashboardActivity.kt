@@ -22,15 +22,17 @@ class DashboardActivity : AppCompatActivity() {
         val tag = view.tag?.toString()
 
 
-        when (tag) {
-            "inicio" -> login()
-            "perfil0" -> Perfil()
-            "Construcao" -> Construcao()
-            "CameraActivity" -> CameraActivity()
-            "configuracoes" -> Construcao()
-            "chat0" -> Construcao()
+            when (tag) {
+                "inicio" -> login()
+                "perfil0" -> Perfil()
+                "cadastro" -> cadastro()
+                "Crud0" -> startActivity(Intent(this, cadastrargestante::class.java))
+                "CameraActivity" -> CameraActivity()
+                "configuracoes" -> Construcao()
+                "chat0" -> Construcao()
+            }
         }
-    }
+
 
     private fun login() {
         val intent = Intent(this, login::class.java)
@@ -49,16 +51,9 @@ class DashboardActivity : AppCompatActivity() {
         val intent = Intent(this, CameraActivity::class.java)
         startActivity(intent)
     }
-    //private fun configuracoes() {
-       // val intent = Intent(this, configuracoes::class.java)
-       // startActivity(intent)
-    //}
-    //private fun chatbot() {
-       // val intent = Intent(this, cadastro::class.java)
-       // startActivity(intent)
-    //}
-    private fun cadastro() {
-       val intent = Intent(this, cadastro::class.java)
+    private fun Crud() {
+       val intent = Intent(this, cadastrargestante::class.java)
        startActivity(intent)
     }
+
 }

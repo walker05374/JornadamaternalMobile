@@ -1,7 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-
+    id ("com.google.gms.google-services")
 }
 
 
@@ -14,7 +14,9 @@ android {
         enable = true
     }
 
-
+    buildFeatures {
+        dataBinding = true
+    }
 
     android {
 
@@ -72,9 +74,6 @@ android {
 
 dependencies {
 
-    implementation ("androidx.navigation:navigation-compose:2.4.0-alpha01")
-
-
 
 
     implementation ("androidx.customview:customview-poolingcontainer:1.0.0")
@@ -116,6 +115,20 @@ dependencies {
 
     implementation ("androidx.legacy:legacy-support-v4:1.0.0")
 
+    implementation ("androidx.navigation:navigation-compose:2.4.0-alpha01")
+
+
+    implementation ("com.google.firebase:firebase-database-ktx:20.0.0")
+    implementation ("com.google.firebase:firebase-auth-ktx:20.0.0")
+    implementation ("com.google.firebase:firebase-storage-ktx:20.0.0")
+    implementation ("com.google.firebase:firebase-messaging-ktx:22.0.0")
+    implementation ("com.google.firebase:firebase-firestore-ktx:23.0.0")
+    implementation ("com.google.firebase:firebase-analytics:20.0.0")
+
+
+    implementation ("com.github.clans:fab:1.6.4")
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
 
 
 }

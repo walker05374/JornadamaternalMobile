@@ -185,26 +185,26 @@
                     android:foreground="@drawable/azul_border">
 
                     <TextView
-                        android:id="@+id/noticiasName"
+                        android:id="@+id/cadastro"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/noticias"
+                        android:layout_below="@+id/Crud0"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
-                        android:text="Noticias"
+                        android:onClick="abrirAtividade"
+                        android:tag="Crud0"
+                        android:text="Cadastrar"
                         android:textColor="@color/azul"
-                        android:textSize="20sp"
-                        android:tag="Construcao"
-                        android:onClick="abrirAtividade"/>
+                        android:textSize="20sp" />
 
                     <ImageView
-                        android:id="@+id/noticias"
+                        android:id="@+id/Crud0"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="15dp"
                         android:src="@drawable/baseline_error1_24"
-                        android:tag="Construcao"
+                        android:tag="Crud0"
                         android:onClick="abrirAtividade"/>
 
                 </RelativeLayout>
@@ -321,7 +321,7 @@
                         android:layout_below="@+id/chatbot"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
-                        android:text="\ChatBot"
+                        android:text="ChatBot"
                         android:textColor="@color/azul"
                         android:textSize="20sp"
                         android:tag="chat0"

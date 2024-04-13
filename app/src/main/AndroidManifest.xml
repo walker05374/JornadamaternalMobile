@@ -3,13 +3,17 @@
 
 
     xmlns:tools="http://schemas.android.com/tools" >
-
     <uses-permission android:name="android.permission.CAMERA" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.android.tools.build:gradle" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
 
 
     <uses-feature android:name="android.hardware.camera" />
@@ -19,12 +23,12 @@
     <uses-permission android:name="android.permission.VIBRATE" />
 
 
-
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-feature android:name="android.hardware.location.gps" />
 
     <application
+
+        android:name=".MyApplication"
 
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -77,6 +81,21 @@
             android:exported="false" />
         <activity
             android:name=".cadastro"
+            android:exported="false" />
+        <activity
+            android:name=".SignupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".cadastrargestante"
+            android:exported="false" />
+        <activity
+            android:name=".atualizargestante"
+            android:exported="false" />
+        <activity
+            android:name=".lercadastros"
+            android:exported="false" />
+        <activity
+            android:name=".excluirgestante"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
