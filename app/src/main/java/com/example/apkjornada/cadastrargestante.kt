@@ -36,7 +36,7 @@ class cadastrargestante : AppCompatActivity() {
         estadoEditText = findViewById(R.id.estado)
         cepEditText = findViewById(R.id.ocep)
 
-        val salvarButton: Button = findViewById(R.id.saveButton)
+        val salvarButton: Button = findViewById(R.id.buttonViewatualizar)
         salvarButton.setOnClickListener {
             adicionarCliente()
         }

@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val intent = Intent(this@MainActivity, cadastrargestante::class.java)
+        val intent = Intent(this@MainActivity, login::class.java)
         startActivity(intent)
     }
 }
